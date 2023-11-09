@@ -23,10 +23,21 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error");
+}
+
 app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseStaticFiles();
 
 app.UseAuthorization();
 
-app.MapControllers();
+app.MapControllerRoute(
+   name: "default",
+   pattern: "{controller = Home}/{action = Index}/{Id?}");
 
 app.Run();
