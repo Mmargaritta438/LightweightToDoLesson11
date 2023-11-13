@@ -1,10 +1,11 @@
-﻿﻿@model AllTasksModel
+﻿@using LightweightToDoLesson11.Models;
+﻿@model AllGoalsModele
 
 @{
-    ViewData["Title"] = "All your tasks";
+    ViewData["Title"] = "All your goals";
 }
 
-<div class="display-6">ToDoList</div>
+<div class="display-6">ToDoRoster</div>
 
 <div class="mt-5 mb-5">
     <div class="goalgroup-header text-primary shadow-sm">
@@ -20,10 +21,10 @@
                 </div>
                 <div class="goalcard-body">@goal.Text</div>
                 <div class="goalcard-footer">
-                    @using (Html.BeginForm("MarkAsCompleted", "ToDoList", FormMethod.Post))
+                    @using (Html.BeginForm("Completed", "ToDoRoster", FormMethod.Post))
                     {
                         <input type="hidden" name="goalId" value="@goal.Id" />
-                        <input type="submit" class="btn btn-success me-1 btn-sm" value="Mark as completed" />
+                        <input type="submit" class="btn btn-success me-1 btn-sm" value="Completed" />
                     }
                     <a class="btn btn-sm btn-primary" asp-controller="ToDoList" asp-action="Details" asp-route-id="@goal.Id">More</a>
                 </div>
@@ -47,7 +48,7 @@
                 <div class="goalcard-body">@goal.Text</div>
                 <div class="goalcard-footer">
                     <div class="text-wrap mt-auto">Completed: @goal.CompletedAt.Value.ToString("dd.MM.yyyy, HH:mm:ss")</div>
-                    <a class="d-block btn btn-sm btn-secondary ms-3" asp-controller="ToDoList" asp-action="Details" asp-route-id="@goal.Id">More</a>
+                    <a class="d-block btn btn-sm btn-secondary ms-3" asp-controller="ToDoRoster" asp-action="Details" asp-route-id="@goal.Id">More</a>
                 </div>
             </div>
         }

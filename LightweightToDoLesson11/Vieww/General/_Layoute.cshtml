@@ -1,19 +1,20 @@
-﻿﻿@using LightweightToDoLesson11.Utility
+﻿@using LightweightToDoLesson11.Models;
+﻿@using LightweightToDoLesson11.Usefulness
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ToDoList</title>
+    <title>@ViewData["Title"] - ToDoRoster</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/ToDoList.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ToDoRoster.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand">ToDoList</a>
+                <a class="navbar-brand">ToDoRoster</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,10 +22,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ToDoList" asp-action="AllTasks">All Tasks</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ToDoRoster" asp-action="AllGoals">All Goal</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ToDoList" asp-action="AddNew">New Task</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ToDoRoster" asp-action="AddOne">One Goal</a>
                         </li>
                     </ul>
                 </div>
@@ -34,12 +35,12 @@
     <div class="mx-auto" style="max-width: 1500px">
         <main class="pb-3 mx-3">
             @{
-                var alert = TempData.Get<AlertModel>("Alert");
-                if (alert is not null)
+                var alarm = TempData.Get<AlarmModele>("Alarm");
+                if (alarm is not null)
                 {
-                    var alertClass = "alert shadow-sm animate mb-4 " + (alert.Success ? "alert-success" : "alert-danger");
-                    <div class="@alertClass" role="alert">
-                        @alert.Message
+                    var alarmClass = "alert shadow-sm animate mb-4 " + (alarm.Success ? "alarm-success" : "alarm-danger");
+                    <div class="@alarmClass" role="alarm">
+                        @alarm.Message
                     </div>
                 }
             }
