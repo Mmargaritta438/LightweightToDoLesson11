@@ -1,0 +1,17 @@
+﻿@using LightweightToDoLesson11.Models;
+﻿<div class="display-6">Last added goals</div>
+
+<div class="mt-5 mb-5">
+    <div class="grid-view">
+        @foreach (QueuedToDoGoalModele goal in Model)
+        {
+            <div class="goalcard animate">
+                <div class="goalcard-header">
+                    <div>@goal.Id</div>
+                    <div>@goal.CreatedAt.ToString("dd.MM.yyyy, HH:mm:ss")</div>
+                </div>
+                <div class="goalcard-body">@goal.Text</div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,6 +1,9 @@
-﻿namespace LightweightToDoLesson11.Models
+﻿namespace LightweightToDoLesson11.Models;
+
+public class ToDoGoalModele
 {
-    public class ToDoGoalModel
-    {
-    }
+    public int Id { get; set; }
+    public string Text { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime? CompletedAt { get; set; }
 }
